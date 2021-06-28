@@ -11,7 +11,18 @@
     <div id="app">
         <h2 class="title has-text-centered dividing-header">UpVote!</h2>
         <div class="section">
-            <article v-for="submission in sortedSubmissions" class="media"
+
+            <article v-for="submission in sortedSubmissions" v-bind:key="submission.id" class="media"
+                v-bind:class="{ 'blue-border': submission.votes >= 20 }">
+                <submission-component v-bind:submission="submission" v-bind:submissions="sortedSubmissions">
+
+                </submission-component>
+            </article>
+
+
+
+
+            <!-- <article v-for="submission in sortedSubmissions" class="media"
             v-bind:class="{'blue-border': submission.votes >= 20}">
 
                 <figure class="media-left"> 
@@ -40,7 +51,7 @@
                         <strong class="has-text-info">{{ submission.votes }}</strong>
                     </span>
                 </div>
-            </article>
+            </article> -->
 
 
         </div>
